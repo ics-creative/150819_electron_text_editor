@@ -1,5 +1,9 @@
 {
-  "name": "Electron Editor",
-  "version": "0.0.0",
-  "main": "main.js"
+  "name": "ElectronSampleEditor",
+  "version": "0.0.1",
+  "main": "main.js",
+  "author": "Nozomi Nohara",
+  "devDependencies": {
+    "electron-prebuilt": "^0.30.4"
+  }
 }

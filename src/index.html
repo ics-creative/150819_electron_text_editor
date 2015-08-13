@@ -1,11 +1,21 @@
 <!DOCTYPE html>
 <html>
+    
     <head>
         <meta charset="utf-8">
+        <link href="main.css" rel="stylesheet">
         <title>Electron Editor</title>
     </head>
     
-    <body>
+    <body onload="onLoad()">
+        <script src="editor.js"></script>
+        <div id="header_fixed">
+            <button type="button" onclick="openLoadFile()">読み込み</button>
+            <button type="button" onclick="saveFile()">保存</button>
+        </div>
+        <div id="footer_fixed"></div>
+        <div id="input_area">
+            <textarea id="input_txt"></textarea>
+        </div>
     </body>
-
 </html>
