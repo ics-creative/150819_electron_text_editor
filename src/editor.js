@@ -19,7 +19,7 @@ function onLoad() {
 		e.preventDefault(); // イベントの伝搬を止めて、アプリケーションのHTMLとファイルが差し替わらないようにする
 		return false;
 	};
-
+	
 	// 入力関連領域
 	inputArea = document.getElementById("input_area");
 	// 入力領域
@@ -132,7 +132,7 @@ function writeFile(path, data) {
 function saveNewFile() {
 
 	var win = browserWindow.getFocusedWindow();
-    dialog.showSaveDialog(
+	dialog.showSaveDialog(
 		win,
 		// どんなダイアログを出すかを指定するプロパティ
 		{
