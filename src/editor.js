@@ -72,7 +72,7 @@ function openLoadFile() {
  */
 function readFile(path) {
 	currentPath = path;
-	fs.readFile(path, 'utf8', function (err, text) {
+	fs.readFile(path, function (err, text) {
 		if (err != null) {
 			alert('error : ' + err);
 		}
