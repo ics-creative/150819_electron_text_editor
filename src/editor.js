@@ -47,7 +47,7 @@ function onLoad() {
 function openLoadFile() {
 	var win = browserWindow.getFocusedWindow();
 
-    dialog.showOpenDialog(
+	dialog.showOpenDialog(
 		win,
 		// どんなダイアログを出すかを指定するプロパティ
 		{
