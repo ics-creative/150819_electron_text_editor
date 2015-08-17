@@ -9,17 +9,16 @@ var inputTxt = null;
 var footerArea = null;
 
 var currentPath = "";
+var editor = null;
+
+function onResize() {
+	inputArea.style.height = window.innerHeight ;
+}
 
 /**
  * Webページ読み込み時の処理
  */
 function onLoad() {
-	// documentにドラッグされた場合 / ドロップされた場合
-	document.ondragover = document.ondrop = function (e) {
-		e.preventDefault(); // イベントの伝搬を止めて、アプリケーションのHTMLとファイルが差し替わらないようにする
-		return false;
-	};
-	
 	// 入力関連領域
 	inputArea = document.getElementById("input_area");
 	// 入力領域
@@ -27,6 +26,23 @@ function onLoad() {
 	// フッター領域
 	footerArea = document.getElementById("footer_fixed");
 
+	//	エディター
+	editor = ace.edit("input_txt");
+	var JavaScriptMode = ace.require("ace/mode/javascript").Mode;
+	editor.getSession().setMode(new JavaScriptMode());
+	editor.setTheme("ace/theme/twilight");
+	 
+	window.onresize = onResize;
+	onResize();
+
+	//	ドラッグ&ドロップ関連処理
+	// documentにドラッグされた場合 / ドロップされた場合
+	document.ondragover = document.ondrop = function (e) {
+		e.preventDefault(); // イベントの伝搬を止めて、アプリケーションのHTMLとファイルが差し替わらないようにする
+		return false;
+	};
+	
+	
 	inputArea.ondragover = function () {
 		return false;
 	};
@@ -72,14 +88,15 @@ function openLoadFile() {
  */
 function readFile(path) {
 	currentPath = path;
-	fs.readFile(path, function (err, text) {
-		if (err != null) {
-			alert('error : ' + err);
+	fs.readFile(path, function (error, text) {
+		if (error != null) {
+			alert('error : ' + error);
+			return ;
 		}
 		// フッター部分に読み込み先のパスを設定する
 		footerArea.innerHTML = path;
 		// テキスト入力エリアに設定する
-		inputTxt.value = text;
+		editor.setValue(text.toString(),-1);
 	});
 }
 
@@ -108,7 +125,7 @@ function saveFile() {
 		function (respnse) {
 			// OKボタン(ボタン配列の0番目がOK)
 			if (respnse == 0) {
-				var data = inputTxt.value;
+				var data = editor.getValue();
 				writeFile(currentPath, data);
 			}
 		}
@@ -119,9 +136,10 @@ function saveFile() {
  * ファイルを書き込む
  */
 function writeFile(path, data) {
-	fs.writeFile(path, data, function (err) {
-		if (err != null) {
-			alert('error : ' + err);
+	fs.writeFile(path, data, function (error) {
+		if (error != null) {
+			alert('error : ' + error);
+			return ;
 		}
 	});
 }
@@ -147,7 +165,7 @@ function saveNewFile() {
 		// セーブ用ダイアログが閉じられた後のコールバック関数
 		function (fileName) {
 			if (fileName) {
-				var data = inputTxt.value;
+				var data = editor.getValue();
 				currentPath = fileName;
 				writeFile(currentPath, data);
 			}

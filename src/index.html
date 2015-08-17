@@ -6,6 +6,9 @@
 	<title>Electron Text Editor</title>
 	<link href="main.css" rel="stylesheet">
 	<script src="editor.js"></script>
+	<script src="lib/ace/ace.js" type="text/javascript" charset="utf-8"></script>
+	<script src="lib/ace/mode-javascript.js" type="text/javascript" charset="utf-8"></script>
+	 <script src="lib/ace/theme-twilight.js" type="text/javascript" charset="utf-8"></script>
 </head>
 
 <body onload="onLoad()">
@@ -15,7 +18,7 @@
 	</div>
 	<div id="footer_fixed"></div>
 	<div id="input_area">
-		<textarea id="input_txt"></textarea>
+		<div id="input_txt"></div>
 	</div>
 </body>
 
