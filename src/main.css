@@ -37,36 +37,3 @@ body{
 	color:#eeeeee;
 	font-size:10;
 }
-
-/** スクロールバーデザイン */
-.ace_scrollbart::-webkit-scrollbar
-{
-	width:10px;
-	background:#333;
-}
-.ace_scrollbar::-webkit-scrollbar:horizontal
-{
-	height:5px;
-}
-.ace_scrollbar::-webkit-scrollbar-button
-{
-	width:10px;
-	height:5px;
-	background:#999;
-}
-.ace_scrollbar::-webkit-scrollbar-piece
-{
-	background:#666;
-}
-.ace_scrollbar::-webkit-scrollbar-piece:start
-{
-	background:#666;
-}
-.ace_scrollbar::-webkit-scrollbar-thumb
-{
-	background:#999;
-}
-.ace_scrollbar::-webkit-scrollbar-corner
-{
-	background:#999;
-}
