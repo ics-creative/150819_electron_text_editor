@@ -25,7 +25,6 @@ function onLoad() {
 	inputTxt = document.getElementById("input_txt");
 	// フッター領域
 	footerArea = document.getElementById("footer_fixed");
-
 	//	エディター
 	editor = ace.edit("input_txt");
 	var JavaScriptMode = ace.require("ace/mode/javascript").Mode;
@@ -71,7 +70,7 @@ function openLoadFile() {
 			filters: [
 				{
 					name: 'Documents',
-					extensions: ['txt', 'text', 'html']
+					extensions: ['txt', 'text', 'html','js']
 				}
 			]
 		},
@@ -158,7 +157,7 @@ function saveNewFile() {
 			filters: [
 				{
 					name: 'Documents',
-					extensions: ['txt', 'text', 'html']
+					extensions: ['txt', 'text', 'html','js']
 				}
 			]
 		},
