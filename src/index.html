@@ -4,17 +4,18 @@
 <head>
 	<meta charset="utf-8">
 	<title>Electron Text Editor</title>
+	<link href="lib/boostrap/css/bootstrap.min.css" rel="stylesheet">
 	<link href="main.css" rel="stylesheet">
 	<script src="editor.js"></script>
 	<script src="lib/ace/ace.js" type="text/javascript" charset="utf-8"></script>
 	<script src="lib/ace/mode-javascript.js" type="text/javascript" charset="utf-8"></script>
-	 <script src="lib/ace/theme-twilight.js" type="text/javascript" charset="utf-8"></script>
+	<script src="lib/ace/theme-twilight.js" type="text/javascript" charset="utf-8"></script>
 </head>
 
 <body onload="onLoad()">
 	<div id="header_fixed">
-		<button type="button" onclick="openLoadFile()">読み込み</button>
-		<button type="button" onclick="saveFile()">保存</button>
+		<button type="button" class="btn-sm btn-primary" onclick="openLoadFile()">読み込み</button>
+		<button type="button" class="btn-sm btn-primary" onclick="saveFile()">保存</button>
 	</div>
 	<div id="footer_fixed"></div>
 	<div id="input_area">
