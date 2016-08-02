@@ -1,7 +1,8 @@
 var fs = require('fs');
-var remote = require('remote');
-var dialog = remote.require('dialog');
-var browserWindow = remote.require('browser-window');
+var remote = require("electron").remote;
+var dialog = remote.dialog;
+var browserWindow = remote.BrowserWindow;
+
 
 var inputArea = null;
 var inputTxt = null;
