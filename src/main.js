@@ -1,8 +1,15 @@
-var app = require('app');	// アプリケーション作成用モジュールをロード
-var BrowserWindow = require('browser-window');
+'use strict';
+const electron = require("electron");
+const app = electron.app; // アプリケーション作成用モジュールをロード
+const BrowserWindow = electron.BrowserWindow;
 
 //	クラッシュレポート
-require('crash-reporter').start();
+electron.crashReporter.start({
+  productName: 'YourName',
+  companyName: 'YourCompany',
+  submitURL: 'https://your-domain.com/url-to-submit',
+  autoSubmit: true
+})
 
 var mainWindow = null;
 
@@ -17,7 +24,7 @@ app.on('ready', function () {
 	mainWindow = new BrowserWindow({ width: 800, height: 540 });
 
 	// メインウィンドウに表示するURLを指定します。
-	mainWindow.loadUrl('file://' + __dirname + '/index.html');
+	mainWindow.loadURL('file://' + __dirname + '/index.html');
 
 	// メインウィンドウが閉じられたときの処理
 	mainWindow.on('closed', function () {
