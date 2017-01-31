@@ -4,6 +4,6 @@
   "main": "main.js",
   "author": "Nozomi Nohara",
   "devDependencies": {
-    "electron-prebuilt": "^0.30.4"
+    "electron": "1.4.15"
   }
 }
