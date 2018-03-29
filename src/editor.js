@@ -5,7 +5,7 @@ let inputArea = null;
 let inputTxt = null;
 let footerArea = null;
 
-let currentPath = "";
+let currentPath = '';
 let editor = null;
 
 /**
@@ -13,15 +13,15 @@ let editor = null;
  */
 function onLoad() {
   // 入力関連領域
-  inputArea = document.getElementById("input_area");
+  inputArea = document.getElementById('input_area');
   // 入力領域
-  inputTxt = document.getElementById("input_txt");
+  inputTxt = document.getElementById('input_txt');
   // フッター領域
-  footerArea = document.getElementById("footer_fixed");
+  footerArea = document.getElementById('footer_fixed');
 
-  editor = ace.edit("input_txt");
-  editor.getSession().setMode("ace/mode/javascript");
-  editor.setTheme("ace/theme/twilight");
+  editor = ace.edit('input_txt');
+  editor.getSession().setMode('ace/mode/javascript');
+  editor.setTheme('ace/theme/twilight');
 
   // ドラッグ&ドロップ関連処理
   // documentにドラッグされた場合 / ドロップされた場合
@@ -87,14 +87,13 @@ function readFile(path) {
   });
 }
 
-
 /**
  * ファイルを保存する
  */
 function saveFile() {
 
   //　初期の入力エリアに設定されたテキストを保存しようとしたときは新規ファイルを作成する
-  if (currentPath == "") {
+  if (currentPath == '') {
     saveNewFile();
     return;
   }
