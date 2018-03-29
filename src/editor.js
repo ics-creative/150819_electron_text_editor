@@ -8,6 +8,8 @@ let footerArea = null;
 let currentPath = '';
 let editor = null;
 
+window.addEventListener('DOMContentLoaded', onLoad);
+
 /**
  * Webページ読み込み時の処理
  */
@@ -24,24 +26,38 @@ function onLoad() {
   editor.setTheme('ace/theme/twilight');
 
   // ドラッグ&ドロップ関連処理
-  // documentにドラッグされた場合 / ドロップされた場合
-  document.ondragover = document.ondrop = function (e) {
-    e.preventDefault(); // イベントの伝搬を止めて、アプリケーションのHTMLとファイルが差し替わらないようにする
-    return false;
-  };
+  // イベントの伝搬を止めて、アプリケーションのHTMLとファイルが差し替わらないようにする
+  document.addEventListener('dragover', (event) => {
+    event.preventDefault();
+  });
+  document.addEventListener('drop', (event) => {
+    event.preventDefault();
+  });
 
-  inputArea.ondragover = function () {
-    return false;
-  };
-  inputArea.ondragleave = inputArea.ondragend = function () {
-    return false;
-  };
-  inputArea.ondrop = function (e) {
-    e.preventDefault();
-    var file = e.dataTransfer.files[0];
+  // 入力部分の処理
+  inputArea.addEventListener('dragover', (event) => {
+    event.preventDefault();
+  });
+  inputArea.addEventListener('dragleave', (event) => {
+    event.preventDefault();
+  });
+  inputArea.addEventListener('dragend', (event) => {
+    event.preventDefault();
+  });
+  inputArea.addEventListener('drop', (event) => {
+    event.preventDefault();
+    const file = event.dataTransfer.files[0];
     readFile(file.path);
-    return false;
-  };
+  });
+
+  // 「読み込む」ボタンの制御
+  document.querySelector('#btnLoad').addEventListener('click', () => {
+    openLoadFile();
+  });
+  // 「保存する」ボタンの制御
+  document.querySelector('#btnSave').addEventListener('click', () => {
+    openLoadFile();
+  });
 };
 
 /**
@@ -63,9 +79,9 @@ function openLoadFile() {
       ]
     },
     // [ファイル選択]ダイアログが閉じられた後のコールバック関数
-    function (filenames) {
-      if (filenames) {
-        readFile(filenames[0]);
+    (fileNames) => {
+      if (fileNames) {
+        readFile(fileNames[0]);
       }
     });
 }
@@ -75,7 +91,7 @@ function openLoadFile() {
  */
 function readFile(path) {
   currentPath = path;
-  fs.readFile(path, function (error, text) {
+  fs.readFile(path, (error, text) => {
     if (error != null) {
       alert('error : ' + error);
       return;
@@ -93,7 +109,7 @@ function readFile(path) {
 function saveFile() {
 
   //　初期の入力エリアに設定されたテキストを保存しようとしたときは新規ファイルを作成する
-  if (currentPath == '') {
+  if (currentPath === '') {
     saveNewFile();
     return;
   }
@@ -107,10 +123,10 @@ function saveFile() {
       detail: '本当に保存しますか？'
     },
     // メッセージボックスが閉じられた後のコールバック関数
-    function (respnse) {
+    (response) => {
       // OKボタン(ボタン配列の0番目がOK)
-      if (respnse == 0) {
-        var data = editor.getValue();
+      if (response === 0) {
+        const data = editor.getValue();
         writeFile(currentPath, data);
       }
     }
@@ -118,19 +134,18 @@ function saveFile() {
 }
 
 /**
- * ファイルを書き込む
+ * ファイルを書き込みます。
  */
 function writeFile(path, data) {
-  fs.writeFile(path, data, function (error) {
+  fs.writeFile(path, data, (error) => {
     if (error != null) {
       alert('error : ' + error);
-      return;
     }
   });
 }
 
 /**
- * 新規ファイルを保存する
+ * 新規ファイルを保存します。
  */
 function saveNewFile() {
 
@@ -148,9 +163,9 @@ function saveNewFile() {
       ]
     },
     // セーブ用ダイアログが閉じられた後のコールバック関数
-    function (fileName) {
+    (fileName) => {
       if (fileName) {
-        var data = editor.getValue();
+        const data = editor.getValue();
         currentPath = fileName;
         writeFile(currentPath, data);
       }

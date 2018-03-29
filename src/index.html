@@ -1,26 +1,23 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="ja">
 <head>
-  <meta charset="utf-8">
+  <meta charset="utf-8"/>
   <title>Electron Text Editor</title>
-  <link href="lib/boostrap/css/bootstrap.min.css" rel="stylesheet">
-  <link href="main.css" rel="stylesheet">
-  <script src="lib/ace/ace.js"></script>
-  <script src="lib/ace/mode-javascript.js"></script>
-  <script src="lib/ace/theme-twilight.js"></script>
-  <script src="editor.js"></script>
+  <link href="lib/boostrap/css/bootstrap.min.css" rel="stylesheet"/>
+  <link href="main.css" rel="stylesheet"/>
+  <script defer src="lib/ace/ace.js"></script>
+  <script defer src="lib/ace/mode-javascript.js"></script>
+  <script defer src="lib/ace/theme-twilight.js"></script>
+  <script defer src="editor.js"></script>
 </head>
-
-<body onload="onLoad()">
+<body>
   <div id="header_fixed">
-    <button type="button" class="btn-sm btn-primary" onclick="openLoadFile()">読み込み</button>
-    <button type="button" class="btn-sm btn-primary" onclick="saveFile()">保存</button>
+    <button type="button" class="btn-sm btn-primary" id="btnLoad">読み込む</button>
+    <button type="button" class="btn-sm btn-primary" id="btnSave">保存する</button>
   </div>
   <div id="footer_fixed"></div>
   <div id="input_area">
     <div id="input_txt"></div>
   </div>
 </body>
-
 </html>

@@ -25,7 +25,7 @@ function createWindow() {
   mainWindow.webContents.openDevTools();
 
   // メインウィンドウが閉じられたときの処理
-  mainWindow.on('closed', function () {
+  mainWindow.on('closed', () => {
     mainWindow = null;
   });
 }
@@ -34,14 +34,14 @@ function createWindow() {
 app.on('ready', createWindow);
 
 // 全てのウィンドウが閉じたときの処理
-app.on('window-all-closed', function () {
+app.on('window-all-closed', () => {
   // macOSのとき以外はアプリを終了させます
   if (process.platform !== 'darwin') {
     app.quit();
   }
 });
 // アプリケーションがアクティブになった時の処理(Macだと、Dockがクリックされた時）
-app.on('activate', function () {
+app.on('activate', () => {
   /// メインウィンドウが消えている場合は再度メインウィンドウを作成する
   if (mainWindow === null) {
     createWindow();
