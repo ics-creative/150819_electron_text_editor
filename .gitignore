@@ -1,1 +1,4 @@
 Electron Editor-*/
+node_modules
+/.idea
+/yarn.lock
