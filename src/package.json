@@ -1,9 +1,5 @@
 {
   "name": "ElectronTextEditor",
   "version": "0.0.1",
-  "main": "main.js",
-  "author": "Nozomi Nohara",
-  "devDependencies": {
-    "electron": "1.4.15"
-  }
+  "main": "main.js"
 }
