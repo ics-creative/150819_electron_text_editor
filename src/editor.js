@@ -61,7 +61,7 @@ function onLoad() {
 };
 
 /**
- * 読み込みするためのファイルを開く
+ * ファイルを開きます。
  */
 function openLoadFile() {
   const win = BrowserWindow.getFocusedWindow();
@@ -87,7 +87,7 @@ function openLoadFile() {
 }
 
 /**
- * テキストを読み込み、テキストを入力エリアに設定する
+ * テキストを読み込み、テキストを入力エリアに設定します。
  */
 function readFile(path) {
   currentPath = path;
@@ -104,7 +104,7 @@ function readFile(path) {
 }
 
 /**
- * ファイルを保存する
+ * ファイルを保存します。
  */
 function saveFile() {
 
