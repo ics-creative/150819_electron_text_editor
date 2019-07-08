@@ -56,7 +56,7 @@ function onLoad() {
   });
   // 「保存する」ボタンの制御
   document.querySelector('#btnSave').addEventListener('click', () => {
-    openLoadFile();
+    saveFile();
   });
 };
 
