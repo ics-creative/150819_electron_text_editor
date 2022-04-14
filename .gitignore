@@ -2,3 +2,6 @@ Electron Editor-*/
 node_modules
 /.idea
 /yarn.lock
+/package-lock.json
+.DS_Store
+

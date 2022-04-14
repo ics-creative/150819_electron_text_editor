@@ -1,9 +1,13 @@
 {
   "scripts": {
-    "start": "electron ./src"
+    "start": "electron ./src",
+    "format": "prettier --write 'src/**/*.{html,css,js}' '!src/libs/**'"
+  },
+  "dependencies": {
+    "electron": "^18.0.3"
   },
   "devDependencies": {
-    "electron": "^1.8.4"
+    "prettier": "^2.6.2"
   },
   "private": true
 }
